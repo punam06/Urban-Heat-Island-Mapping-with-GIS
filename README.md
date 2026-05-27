@@ -57,6 +57,8 @@ To support easy cross-collaboration, the project integrates modern tools across 
 
 ## 🗺️ System Architecture & Workflow
 
+**For a full, easy-to-understand breakdown of the project architecture, inputs/outputs, and detailed subgroup responsibilities, please read the [Project Architecture Guide](documentation/project_architecture.md).**
+
 Understanding the data flow is key to smooth subgroup integration. The system routes spatial and environmental telemetry through three main stages:
 
 ```mermaid
