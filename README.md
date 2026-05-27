@@ -1,8 +1,57 @@
 # 🌡️ Urban Heat Island Mapping & Predictive GIS Dashboard
 
-Welcome to the **Urban Heat Island (UHI) Mapping & Analytics System**. This repository serves as a modular, high-end collaborative codebase designed for **Theory Project Group 4 (CSE 3-2)**. 
+Welcome to the **Urban Heat Island (UHI) Mapping & Analytics System**. This repository serves as a modular, high-end collaborative codebase designed for **Theory Project Group 4 (CSE 3-2)**.
 
 The system focuses on a high-resolution micro-analysis of **Mirpur 12** as the baseline ground-truth deployment and scales dynamically to divisional boundaries across Bangladesh: **Entire Dhaka Metropolitan Area**, **Sylhet**, **Rajshahi**, and **Chittagong**. It fuses satellite remote sensing data (specifically Land Surface Temperature and vegetation canopy ratios) with ground-truth sensor parameters to visualize thermal anomalies and support sustainable urban planning.
+
+---
+
+## 🌐 Strategic Project Charter
+
+### 🎯 Project Purpose & Objectives
+Rapid urbanization across Bangladesh has replaced natural green canopies with heat-absorbing concrete pavements and high-density multi-story structures. The purpose of this project is to model and visualize this **Urban Heat Island (UHI) effect** to identify thermal hotspots, analyze their environmental causes, and predict temperatures based on vegetation coverage.
+- **Identify Micro-Thermal Anomalies:** Locate localized heat zones (down to street/alley levels like the Mirpur 12 Bus Stand and Metro Station) that standard macro-climatic tools miss.
+- **Model Vegetation Influence:** Calculate the exact mathematical inverse correlation between green cover indices (NDVI) and surface temperature.
+- **Support Strategic Cooling:** Provide city planners with data-backed locations to deploy green roofs, parks, and water bodies to cool the city.
+
+### 👥 Stakeholders & Beneficiaries (How They Benefit)
+* **Municipal Corporations (e.g., DNCC, DSCC):**
+  - *Benefit:* Obtain hyper-local thermal risk maps to optimize the layout of urban cooling zones and community parks.
+* **Urban Planners & Architects:**
+  - *Benefit:* Acquire concrete-to-vegetation data sheets to design heat-resilient building envelopes, green building guidelines, and low-heat pavements.
+* **General Citizens & Residents:**
+  - *Benefit:* View active regional thermal alerts to plan outdoor activities, reduce heatstroke risks, and locate nearby cooling zones.
+* **Environmental Research Bodies & Academic Institutions:**
+  - *Benefit:* Access a unified platform blending ground-truth coordinates with satellite LST outputs to study climate changes in rapidly growing cities.
+
+### 📈 Expected Impacts
+* **Mitigated Energy Consumption:** Pinpointing hotspots enables targeted tree planting, lowering surrounding temperatures by 2–4°C and cutting air conditioning power demands by up to 15%.
+* **Optimized Public Health Planning:** Provides local hospitals and authorities with heat risk assessments, helping to lower heat-related illnesses among vulnerable demographics (like field workers and children).
+* **Informed Policy Guidance:** Helps establish sustainable city laws, such as mandating minimum green space requirements for new construction projects.
+
+---
+
+## ⚔️ The Strategic Advantage: Over Google's Features
+
+Standard GIS tools (like the Google Environmental Insights Explorer or Google Earth Engine Tree Canopy tool) provide valuable macro datasets. However, this system offers distinct advantages for developing regions:
+
+| Feature Dimension | Google Environmental Insights | This UHI GIS Project |
+| :--- | :--- | :--- |
+| **Data Granularity** | Macro-level estimates (often broad grid scales). | **Hyper-local resolution** incorporating side-streets, DOHS parks, and bus stands. |
+| **Ground-Truth Calibration** | Purely satellite-derived estimates without ground verification. | **Hybrid Data Fusion** combining Landsat/Sentinel LST with synthesized ground sensor coordinates. |
+| **Update Frequency** | Refreshed annually or bi-annually in developing regions. | **Real-time API capabilities** allowing instant uploads of manual field sensor logs. |
+| **Interactive Simulation** | Static viewing of green cover percentages. | **Interactive Regression Engine** allowing planners to simulate how expanding green canopy impacts localized heat. |
+| **Local Customization** | Built on global standard presets, ignoring localized Bangladesh building materials. | **Context-specific parameters** (such as high-traffic metro hubs, local soil, and asphalt structures). |
+
+---
+
+## 🛠️ Technological Stack & Tools Used
+
+To support easy cross-collaboration, the project integrates modern tools across the entire stack:
+* **Frontend UI / Visualization:** HTML5, CSS3 (Glassmorphism & Neon Aesthetics), Bootstrap, **Leaflet.js** (GIS interactive map overlays), and **Chart.js** (Surface telemetry comparison charts).
+* **Backend Processing:** **Python Flask** (routing architecture, local development server, and API dispatching).
+* **Data Processing & Analytics:** **Pandas** (CSV database parsing), **NumPy** (matrix operations), and **Scikit-Learn** (Linear Regression engine).
+* **Spatial/Satellite Assets:** Google Earth Engine (GEE), QGIS, USGS Earth Explorer (Landsat 8/9 thermal bands, Sentinel-2 optical bands).
 
 ---
 
