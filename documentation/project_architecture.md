@@ -80,7 +80,21 @@ To ensure our project scales properly without causing Git merge conflicts, the w
 
 ---
 
-## 🗺️ 3. System Architecture & Workflow Diagrams
+## ⏳ 3. 5-Day Agile Project Roadmap
+
+To ensure rapid execution and synchronization across the entire team, the development is organized into a highly structured 5-day agile sprint:
+
+| Day | 📡 Role 1 (Sayed, Nusair) | ✍️ Role 2 (Punam, Nafiz) | 🎨 Role 3 (Spondon, Rushafi) | 🧠 Role 4 (Ajwad, Sabbir) |
+|:---:|:---|:---|:---|:---|
+| **1** | Establish repository structure and write `preprocessing.py` data loader for Mirpur 12 baseline CSV. | Set up `calculation.py` boilerplate and draft mathematical methodology descriptions. | Initialize standard Matplotlib/Seaborn canvas settings and Folium map bounds configurations. | Map features & targets from data contract; select standard regression modules in Scikit-Learn. |
+| **2** | Clean ground telemetry coords and perform data fusion of satellite LST averages with CSV datasets. | Implement calculations for physical NDVI and LST variables using vectorized NumPy equations. | Match surface categories dynamically to custom colors (Concrete: Red, Vegetation: Green). | Train baseline Linear Regression model, compute coefficients ($\alpha$, $\beta$), and log metrics. |
+| **3** | Formulate simulated divisional presets (Dhaka, Sylhet, etc.) for macro multi-city scale-up testing. | Perform data validation checks on LST/NDVI values to confirm thermal range distributions. | Generate and export Folium interactive heatmaps (HTML files with popups) for all 5 cities. | Implement Decision Tree and Random Forest regressions for advanced nonlinear forecast predictions. |
+| **4** | Audit the data directory and ensure all geospatial and ground-truth datasets are cleanly stored. | Author Chapter 3 & 4 of the academic report, detailing mathematical models and architecture. | Finalize map popup tables, bind real JPEGs, and export Matplotlib concrete vs. veg scatter plots. | Compute benchmarking metrics (RMSE, MAE, $R^2$) across all AI regressors and serialize to JSON logs. |
+| **5** | Integrate end-to-end master coordinator script `main.py` and run full validation loops. | Finalize final thesis chapter drafting, audit slide deck math, and coordinate Viva mock simulations. | Re-render final graphs/maps, verify outputs, and capture screenshots for the final slide presentation. | Review fit metrics accuracy across all regions and verify pipeline output matches target schema. |
+
+---
+
+## 🗺️ 4. System Architecture & Workflow Diagrams
 
 Here is how data flows sequentially through our pure Python pipeline:
 
@@ -138,7 +152,7 @@ graph TD
 
 ---
 
-## 📂 4. Project Structure & File Architecture
+## 📂 5. Project Structure & File Architecture
 
 Our repository is physically organized inside this strict modular hierarchy, ensuring that our development roles operate in separate logical workspaces:
 
