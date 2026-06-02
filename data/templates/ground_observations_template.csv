@@ -1,0 +1,3 @@
+LocationID,LocationName,Latitude,Longitude,ObservationDateTime,Temperature,SurfaceType,NDVI,TrafficDensity,Time,EstimatedTemp,Image,NIR,Red,Notes
+1,Mirpur-12 Metrorail station,23.826606,90.364136,2024-04-15 14:30:00,32.5,Concrete,0.10,High,Afternoon,30-35,"Mirpur-12 Metrorail station.jpeg",0.1222,0.1000,Busy paved transit area
+2,Mirpur-12 Kids Park,23.830892,90.361812,2024-04-15 14:45:00,26.5,Vegetation,0.80,Low,Afternoon,26-27,"Mirpur-12 Kids Park.jpeg",0.9000,0.1000,Tree-covered cooling zone
