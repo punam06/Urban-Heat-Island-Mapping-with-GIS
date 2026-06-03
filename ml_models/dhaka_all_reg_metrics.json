@@ -1,0 +1,40 @@
+{
+  "region_id": "dhaka_all",
+  "region_name": "Entire Dhaka Metropolitan Area",
+  "alpha_intercept": 34.5334,
+  "beta_slope": 9.7486,
+  "r2_score": 0.9695,
+  "rmse": 0.361,
+  "mae": 0.3099,
+  "avg_temp": 30.4,
+  "peak_hotspot": {
+    "name": "Dhaka_all Site 3",
+    "temp": 33.6,
+    "lat": 23.7913,
+    "lng": 90.40075
+  },
+  "peak_coolspot": {
+    "name": "Dhaka_all Site 8",
+    "temp": 27.0,
+    "lat": 23.83824,
+    "lng": 90.431
+  },
+  "linear_regression": {
+    "alpha_intercept": 34.5334,
+    "beta_slope": 9.7486,
+    "r2_score": 0.9695,
+    "rmse": 0.361,
+    "mae": 0.3099,
+    "formula": "Temperature = 34.53 - (9.75 * NDVI)"
+  },
+  "decision_tree": {
+    "r2_score": 0.9907,
+    "rmse": 0.1994,
+    "mae": 0.1556
+  },
+  "random_forest": {
+    "r2_score": 0.9832,
+    "rmse": 0.2681,
+    "mae": 0.2179
+  }
+}

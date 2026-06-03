@@ -67,7 +67,7 @@ def load_regional_data(region_id, csv_path):
         for i in range(1, 16):
             ndvi = float(np.random.uniform(0.05, 0.8))
             # Linear response: temp = intercept - (slope * ndvi) + noise
-            temp = config["base_temp"] - (config["slope"] * (0.8 - ndvi)) + np.random.normal(0, 0.5)
+            temp = config["base_temp"] - (config["slope"] * ndvi) + np.random.normal(0, 0.5)
             lat = lat_c + np.random.uniform(-0.03, 0.03)
             lng = lng_c + np.random.uniform(-0.03, 0.03)
             

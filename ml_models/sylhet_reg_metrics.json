@@ -1,0 +1,40 @@
+{
+  "region_id": "sylhet",
+  "region_name": "Sylhet Division",
+  "alpha_intercept": 31.2218,
+  "beta_slope": 8.2274,
+  "r2_score": 0.9574,
+  "rmse": 0.3626,
+  "mae": 0.3225,
+  "avg_temp": 27.73,
+  "peak_hotspot": {
+    "name": "Sylhet Site 3",
+    "temp": 30.4,
+    "lat": 24.8759,
+    "lng": 91.85695
+  },
+  "peak_coolspot": {
+    "name": "Sylhet Site 8",
+    "temp": 24.8,
+    "lat": 24.92284,
+    "lng": 91.8872
+  },
+  "linear_regression": {
+    "alpha_intercept": 31.2218,
+    "beta_slope": 8.2274,
+    "r2_score": 0.9574,
+    "rmse": 0.3626,
+    "mae": 0.3225,
+    "formula": "Temperature = 31.22 - (8.23 * NDVI)"
+  },
+  "decision_tree": {
+    "r2_score": 0.9852,
+    "rmse": 0.2137,
+    "mae": 0.1533
+  },
+  "random_forest": {
+    "r2_score": 0.9786,
+    "rmse": 0.2569,
+    "mae": 0.1964
+  }
+}

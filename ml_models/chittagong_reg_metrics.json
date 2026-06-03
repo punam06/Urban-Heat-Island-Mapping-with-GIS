@@ -1,0 +1,40 @@
+{
+  "region_id": "chittagong",
+  "region_name": "Chittagong Division",
+  "alpha_intercept": 33.6322,
+  "beta_slope": 8.7238,
+  "r2_score": 0.964,
+  "rmse": 0.3524,
+  "mae": 0.308,
+  "avg_temp": 29.93,
+  "peak_hotspot": {
+    "name": "Chittagong Site 3",
+    "temp": 32.8,
+    "lat": 22.3379,
+    "lng": 91.77145
+  },
+  "peak_coolspot": {
+    "name": "Chittagong Site 8",
+    "temp": 26.9,
+    "lat": 22.38484,
+    "lng": 91.8017
+  },
+  "linear_regression": {
+    "alpha_intercept": 33.6322,
+    "beta_slope": 8.7238,
+    "r2_score": 0.964,
+    "rmse": 0.3524,
+    "mae": 0.308,
+    "formula": "Temperature = 33.63 - (8.72 * NDVI)"
+  },
+  "decision_tree": {
+    "r2_score": 0.9877,
+    "rmse": 0.2058,
+    "mae": 0.14
+  },
+  "random_forest": {
+    "r2_score": 0.9803,
+    "rmse": 0.2606,
+    "mae": 0.203
+  }
+}

@@ -1,0 +1,12 @@
+Column_Name,String_Category,Numerical_Code
+LocationName,Mirpur DOHS Residential,0
+LocationName,Mirpur-10 Roundabout,1
+LocationName,Mirpur-12 Metro Station,2
+LocationName,National Botanical Garden,3
+LocationName,Sony Square Mirpur-2,4
+SurfaceType,Asphalt,0
+SurfaceType,Concrete,1
+SurfaceType,Vegetation,2
+TrafficDensity,High,0
+TrafficDensity,Low,1
+TrafficDensity,Medium,2

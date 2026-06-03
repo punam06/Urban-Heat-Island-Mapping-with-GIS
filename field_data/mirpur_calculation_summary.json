@@ -1,0 +1,19 @@
+{
+  "rows": 11627,
+  "avg_lst_c": 30.857,
+  "avg_ndvi": 0.00137,
+  "min_ndvi": -0.29591,
+  "max_ndvi": 0.68874,
+  "peak_hotspot": {
+    "name": "Mirpur-10 Roundabout",
+    "lst_c": 43.991,
+    "lat": 23.81,
+    "lng": 90.37
+  },
+  "peak_coolspot": {
+    "name": "National Botanical Garden",
+    "lst_c": 10.0,
+    "lat": 23.82,
+    "lng": 90.35
+  }
+}

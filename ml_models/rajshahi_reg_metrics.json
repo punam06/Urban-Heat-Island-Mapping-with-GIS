@@ -1,0 +1,40 @@
+{
+  "region_id": "rajshahi",
+  "region_name": "Rajshahi Division",
+  "alpha_intercept": 37.8057,
+  "beta_slope": 11.3972,
+  "r2_score": 0.9784,
+  "rmse": 0.354,
+  "mae": 0.3042,
+  "avg_temp": 32.97,
+  "peak_hotspot": {
+    "name": "Rajshahi Site 3",
+    "temp": 36.8,
+    "lat": 24.3555,
+    "lng": 88.59245
+  },
+  "peak_coolspot": {
+    "name": "Rajshahi Site 8",
+    "temp": 29.0,
+    "lat": 24.40244,
+    "lng": 88.6227
+  },
+  "linear_regression": {
+    "alpha_intercept": 37.8057,
+    "beta_slope": 11.3972,
+    "r2_score": 0.9784,
+    "rmse": 0.354,
+    "mae": 0.3042,
+    "formula": "Temperature = 37.81 - (11.4 * NDVI)"
+  },
+  "decision_tree": {
+    "r2_score": 0.9914,
+    "rmse": 0.2236,
+    "mae": 0.1867
+  },
+  "random_forest": {
+    "r2_score": 0.9854,
+    "rmse": 0.2913,
+    "mae": 0.2411
+  }
+}

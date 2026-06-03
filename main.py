@@ -3,13 +3,12 @@ import sys
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CSV_PATH = os.path.join(BASE_DIR, "data", "environmental", "mirpur12_ground_data.csv")
+CSV_PATH = os.path.join(BASE_DIR, "field_data", "mirpur12_ground_data.csv")
 
 # Create output folders
-OUTPUT_DIR = os.path.join(BASE_DIR, "output")
-GRAPHS_DIR = os.path.join(OUTPUT_DIR, "graphs")
-MAPS_DIR = os.path.join(OUTPUT_DIR, "maps")
-MODELS_DIR = os.path.join(OUTPUT_DIR, "models")
+GRAPHS_DIR = os.path.join(BASE_DIR, "gis_maps", "graphs")
+MAPS_DIR = os.path.join(BASE_DIR, "gis_maps")
+MODELS_DIR = os.path.join(BASE_DIR, "ml_models")
 
 for d in [GRAPHS_DIR, MAPS_DIR, MODELS_DIR]:
     os.makedirs(d, exist_ok=True)
@@ -45,9 +44,14 @@ def run_full_pipeline():
             print(f" -> Peak Hotspot: {calc_results['peak_hotspot']['name']} ({calc_results['peak_hotspot']['temp']}°C).")
             print(f" -> Peak Coolspot: {calc_results['peak_coolspot']['name']} ({calc_results['peak_coolspot']['temp']}°C).")
             
+            # Save calculated regional dataframe for dashboard serving
+            calc_csv_path = os.path.join(BASE_DIR, "field_data", f"{r}_data_calculated.csv")
+            df.to_csv(calc_csv_path, index=False)
+            print(f" -> Saved calculated dataset to: {os.path.basename(calc_csv_path)}")
+            
             # 3. Train Machine Learning Models (Linear, DT, Random Forest)
             print(f"[PHASE 3] Machine Learning: Training AI regressors (Linear & Random Forest)...")
-            metrics, metrics_file = run_machine_learning_predictions(df, meta, MODELS_DIR)
+            metrics, metrics_file = run_machine_learning_predictions(df, meta, MODELS_DIR, calc_results)
             print(f" -> Trained Linear Regression Formula: {metrics['linear_regression']['formula']}")
             print(f" -> R² Fit Scores: Linear: {metrics['linear_regression']['r2_score']} | Decision Tree: {metrics['decision_tree']['r2_score']} | Random Forest: {metrics['random_forest']['r2_score']}")
             print(f" -> RMSE Values: Linear: {metrics['linear_regression']['rmse']} | Decision Tree: {metrics['decision_tree']['rmse']} | Random Forest: {metrics['random_forest']['rmse']}")

@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
-def run_machine_learning_predictions(df, meta, models_dir):
+def run_machine_learning_predictions(df, meta, models_dir, calc_results=None):
     """
     Trains multiple AI / Machine Learning regression models (Linear, Decision Tree, and Random Forest)
     on vegetation density index (NDVI) to predict future surface temperatures.
@@ -48,12 +48,41 @@ def run_machine_learning_predictions(df, meta, models_dir):
     r2_rf = r2_score(y, y_pred_rf)
     
     # 5. Compile prediction metrics
+    avg_temp = calc_results.get("avg_temp") if calc_results else round(float(df["Temperature"].mean()), 2)
+    
+    if calc_results:
+        peak_hotspot = calc_results.get("peak_hotspot")
+        peak_coolspot = calc_results.get("peak_coolspot")
+    else:
+        hottest_idx = df["Temperature"].idxmax()
+        coolest_idx = df["Temperature"].idxmin()
+        peak_hotspot = {
+            "name": str(df.loc[hottest_idx, "LocationName"]),
+            "temp": float(df.loc[hottest_idx, "Temperature"]),
+            "lat": float(df.loc[hottest_idx, "Latitude"]),
+            "lng": float(df.loc[hottest_idx, "Longitude"])
+        }
+        peak_coolspot = {
+            "name": str(df.loc[coolest_idx, "LocationName"]),
+            "temp": float(df.loc[coolest_idx, "Temperature"]),
+            "lat": float(df.loc[coolest_idx, "Latitude"]),
+            "lng": float(df.loc[coolest_idx, "Longitude"])
+        }
+
     metrics = {
         "region_id": region,
         "region_name": meta["name"],
+        "alpha_intercept": round(intercept, 4),
+        "beta_slope": round(-slope, 4),  # Positive Beta in: Intercept - Beta * NDVI
+        "r2_score": round(r2_lr, 4),
+        "rmse": round(rmse_lr, 4),
+        "mae": round(mae_lr, 4),
+        "avg_temp": avg_temp,
+        "peak_hotspot": peak_hotspot,
+        "peak_coolspot": peak_coolspot,
         "linear_regression": {
             "alpha_intercept": round(intercept, 4),
-            "beta_slope": round(-slope, 4),  # Represented as Positive Beta in: Intercept - Beta * NDVI
+            "beta_slope": round(-slope, 4),
             "r2_score": round(r2_lr, 4),
             "rmse": round(rmse_lr, 4),
             "mae": round(mae_lr, 4),
