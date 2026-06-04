@@ -80,66 +80,7 @@ Urban-Heat-Island-Mapping-with-GIS/
 
 ---
 
-## 👥 Collaborative Boundaries & Role Instructions
 
-To ensure seamless progress without Git merge conflicts, the codebase has been structured with clear workspace boundaries. Here is exactly what each role needs to do, where they must do it, and how:
-
-### 📡 Role 1: Data Collection & Data Preprocessing
-* **Assigned Members:** Sayed, Nusair
-* **Primary Objective:** Ingest, clean, and align raw ground sensor coordinates and satellite parameters.
-* **Workspace Folder & Boundary:**
-  - Files to modify: [pipeline/preprocessing.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/pipeline/preprocessing.py) and [scripts/preprocess_mirpur_data.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/scripts/preprocess_mirpur_data.py).
-  - Target directories: `field_data/`, `gps_coordinates/`, `satellite_data/`.
-  - Boundary: You manage raw data inputs. Do not touch math equations, plotting libraries, or ML model fitting scripts.
-* **Technical Guidelines:**
-  1. Load field temperature measurements, sensor outputs, and GPS logs using Pandas.
-  2. Implement text normalization, remove duplicates, filter out coordinate points outside the boundary boxes, and handle missing values.
-  3. Ensure that the ingestion loader outputs a unified Pandas DataFrame adhering to the **Shared Data Contract**.
-
----
-
-### ✍️ Role 2: Calculation & Report Writing
-* **Assigned Members:** Punam, Nafiz
-* **Primary Objective:** Implement core physical calculations for NDVI and LST and author the academic report.
-* **Workspace Folder & Boundary:**
-  - Files to modify: [pipeline/calculation.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/pipeline/calculation.py), [scripts/calculate_mirpur_indices.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/scripts/calculate_mirpur_indices.py), and reports inside `documentation/`.
-  - Boundary: You manage the mathematical transformations of inputs and documentation. Do not modify plotting engines or ML regressors.
-* **Technical Guidelines:**
-  1. Implement the mathematical models for NDVI using red and near-infrared (NIR) bands:
-     $$\text{NDVI} = \frac{\text{NIR} - \text{Red}}{\text{NIR} + \text{Red}}$$
-  2. Implement the Land Surface Temperature (LST) calculation based on vegetation canopy index:
-     $$\text{Predicted Temperature} = \alpha - (\beta \times \text{NDVI})$$
-  3. Generate data validation checks to ensure average temperature, hotspots, and coolspots reflect physical realities.
-
----
-
-### 🎨 Role 3: Dataset Plotting & Visualization
-* **Assigned Members:** Spondon, Rushafi
-* **Primary Objective:** Build comparative graphs and GIS mapping coordinate layers.
-* **Workspace Folder & Boundary:**
-  - Files to modify: [pipeline/plotting.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/pipeline/plotting.py) (specifically the static plots and point marker mapping functions).
-  - Target directory: `gis_maps/graphs/` and coordinate points in Leaflet.
-  - Boundary: You govern static plotting, comparison charts, and point markers. You do not write predictive ML scripts or generate the density Heatmap layers.
-* **Technical Guidelines:**
-  1. Use **Matplotlib** and **Seaborn** to build comparative graphs, including Temperature vs. NDVI scatter plots with fitted regression lines, boxplots of surface types, and traffic heat bars.
-  2. Implement coordinate-based GIS mapping overlays mapping site locations, surface profiles, and photos.
-  3. Export static graphs to `gis_maps/graphs/`.
-
----
-
-### 🧠 Role 4: Predictive Analysis (ML)
-* **Assigned Members:** Ajwad, Sabbir
-* **Primary Objective:** Develop machine learning prediction models, run future forecasts, and generate thermal GIS Heatmaps.
-* **Workspace Folder & Boundary:**
-  - Files to modify: [pipeline/prediction.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/pipeline/prediction.py) and Leaflet/Folium heat maps inside [pipeline/plotting.py](file:///Users/punam/Desktop/varsity/3-2/Theory/ESL/Project/pipeline/plotting.py).
-  - Target directory: `ml_models/` and `gis_maps/{region}_heatmap.html`.
-  - Boundary: You govern the ML model files, JSON metrics, and the spatial Heatmap density visual layers.
-* **Technical Guidelines:**
-  1. Train **Linear Regression**, **Decision Tree**, and **Random Forest** regressors on NDVI to predict temperatures.
-  2. Compute evaluation metrics (R², RMSE, MAE) and write outputs to `ml_models/{region}_reg_metrics.json`.
-  3. Generate the Folium interactive **Heatmap** overlays showing predicted localized heat risks, saving them as `gis_maps/{region}_heatmap.html`.
-
----
 
 ## 📊 Shared Data Contract (Pipeline Schema)
 
@@ -195,7 +136,7 @@ Follow these steps to execute the pipeline and run the dashboard locally:
 
 ### 1. Install Dependencies
 ```bash
-pip install pandas numpy matplotlib seaborn folium scikit-learn flask --break-system-packages
+pip install pandas numpy matplotlib seaborn folium scikit-learn flask plotly statsmodels --break-system-packages
 ```
 
 ### 2. Execute Data Preprocessing & Mathematical Calculations
@@ -211,7 +152,7 @@ Execute the master orchestration script from the root directory:
 ```bash
 python main.py
 ```
-*(This processes all 5 regions, runs calculations, fits ML regressors, exports JSON parameters to `ml_models/`, and generates Leaflet maps under `gis_maps/`)*.
+*(This processes all 5 regional models, generating Leaflet maps under `gis_maps/`. It then successfully executes the **Historical Longitudinal Analysis**—generating macro-temporal heat matrices, Plotly wind-cooling mechanics, and Hybrid Machine Learning projections [up to 2030] into `gis_maps/graphs/` and `ml_models/`)*.
 
 ### 4. Launch the Web Dashboard
 Start the Flask web server:

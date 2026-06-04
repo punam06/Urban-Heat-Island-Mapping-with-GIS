@@ -23,6 +23,50 @@ from pipeline import (
     run_machine_learning_predictions
 )
 
+def run_historical_analysis():
+    print("=" * 65)
+    print("📈  RUNNING HISTORICAL LONGITUDINAL ANALYSIS (2020-2026)  📈")
+    print("=" * 65)
+    import pandas as pd
+    from pipeline.calculation import create_location_labels, calculate_hazard_days
+    from pipeline.plotting import (
+        plot_macro_temporal_evolution, plot_longitudinal_thermal_profile,
+        plot_thermal_divergence, plot_hazard_days, plot_wind_cooling_mechanics,
+        plot_ml_hybrid_projections
+    )
+    from pipeline.prediction import run_hybrid_ml_predictions
+
+    unified_csv = os.path.join(BASE_DIR, "field_data", "mirpur_unified_environmental_data.csv")
+    if not os.path.exists(unified_csv):
+        print(f" -> ERROR: Unified dataset not found at {unified_csv}")
+        return
+
+    try:
+        print("[HISTORICAL PHASE 1] Loading and Preprocessing...")
+        df = pd.read_csv(unified_csv)
+        df = df[(df['heat_index_C'] > -50) & (df['wind_speed_kmh'] >= 0)]
+        df = create_location_labels(df)
+        
+        print("[HISTORICAL PHASE 2] Generating Advanced Visualizations...")
+        plot_macro_temporal_evolution(df, GRAPHS_DIR)
+        plot_longitudinal_thermal_profile(df, GRAPHS_DIR)
+        plot_thermal_divergence(df, GRAPHS_DIR)
+        plot_wind_cooling_mechanics(df, MAPS_DIR)
+        
+        danger_counts = calculate_hazard_days(df, hazard_threshold=45.0)
+        plot_hazard_days(danger_counts, GRAPHS_DIR)
+        
+        print("[HISTORICAL PHASE 3] Running Hybrid Machine Learning Models...")
+        metrics_df, timeline_df, metrics_path = run_hybrid_ml_predictions(df, MODELS_DIR)
+        plot_ml_hybrid_projections(metrics_df, timeline_df, GRAPHS_DIR)
+        
+        print(" -> Historical analysis complete. Advanced outputs saved to gis_maps/ and ml_models/")
+    except Exception as e:
+        print(f" -> ERROR in Historical Analysis: {e}")
+        import traceback
+        traceback.print_exc()
+        print("-" * 65)
+
 def run_full_pipeline():
     print("=" * 65)
     print("🌡️  URBAN HEAT ISLAND DATA PIPELINE - PIPELINE INITIATED  🌡️")
@@ -69,6 +113,9 @@ def run_full_pipeline():
             import traceback
             traceback.print_exc()
             print("-" * 65)
+            
+    # Run the new historical pipeline
+    run_historical_analysis()
             
     print("\n" + "=" * 65)
     print("🚀 PIPELINE COMPLETED SUCCESSFULLY! ALL OUTPUTS EXPORTED! 🚀")

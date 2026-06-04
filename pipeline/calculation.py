@@ -190,3 +190,36 @@ def perform_mathematical_calculations(df):
     }
     
     return df, results
+
+def create_location_labels(df):
+    """
+    Constructs descriptive scientific labels for the locations by combining
+    physical coordinates with local morphology descriptors.
+    """
+    output = df.copy()
+    if "Time_of_Day" not in output.columns:
+        if "Observation_Hour" in output.columns and "Observation_Minute" in output.columns:
+            output["Time_of_Day"] = output.apply(lambda r: f"{int(r['Observation_Hour']):02d}:{int(r['Observation_Minute']):02d}", axis=1)
+        else:
+            output["Time_of_Day"] = "12:00"
+            
+    output['Location_Label'] = (
+        output['LocationName'] + "\n" +
+        "[" + output['SurfaceType'] + " | Traffic: " + output['TrafficDensity'] + " | " + output['Time_of_Day'] + "]"
+    )
+    return output
+
+def calculate_hazard_days(df, hazard_threshold=45.0):
+    """
+    Defines a critical environmental health hazard threshold.
+    Returns the exact number of days per year that citizens were exposed
+    to these dangerous conditions across different urban zones.
+    """
+    if "Year" not in df.columns and "Observation_Year" in df.columns:
+        df["Year"] = df["Observation_Year"]
+        
+    df['Is_Dangerous_Day'] = df['heat_index_C'] >= hazard_threshold
+    danger_counts = df.groupby(['LocationName', 'SurfaceType', 'Year'])['Is_Dangerous_Day'].sum().reset_index()
+    danger_counts = danger_counts.rename(columns={'Is_Dangerous_Day': 'Dangerous_Days_Count'})
+    danger_counts['Profile'] = danger_counts['LocationName'] + " (" + danger_counts['SurfaceType'] + ")"
+    return danger_counts
