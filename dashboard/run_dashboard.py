@@ -1,11 +1,14 @@
 import os
 import sys
 
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 # Ensure the backend directory is in the system path to run the app
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR, "backend"))
 
-from app import app
+from app import app  # type: ignore
 
 if __name__ == "__main__":
     print("=" * 65)
